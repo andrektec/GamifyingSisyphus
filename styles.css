@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Diogenes";
+  src: url("font/Diogenes.woff2") format("woff2"),
+    url("font/Diogenes.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --rotation-angle: 0deg;
 }
@@ -8,6 +17,7 @@
 
 body {
   background-color: #e8d3b7;
+  color: #2e3546;
 }
 
 body::before {
@@ -33,12 +43,34 @@ footer {
   background-repeat: repeat-x;
 }
 
+header {
+  font-family: "Diogenes";
+  font-size: 3vh;
+  align-content: center;
+  padding: 0 15px;
+}
+
+header div {
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
 #container {
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 86vh;
+}
+
+#info {
+  font-family: "Diogenes";
+  position: fixed;
+  top: 11vh;
+  left: 5vw;
 }
 
 /* Slider */
@@ -77,14 +109,12 @@ input[type="range"]:focus {
   background-color: transparent;
   width: 20vh;
   height: 20vh;
-  margin-left: -5px;
   cursor: pointer;
   background-color: transparent;
   transform-origin: 50% 50%;
-  filter: invert(15%) sepia(12%) saturate(3764%) hue-rotate(328deg)
-    brightness(92%) contrast(89%) blur(0.2px);
+  filter: blur(0.2px);
   transform: rotate(var(--rotation-angle));
-  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><polygon points="12.7,2 2,9.6 0,34.7 20,39.4 37.7,28 33,7.6 "/></svg>');
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><polygon style="fill:rgb(112,53,41);" points="12.7,2 2,9.6 0,34.7 20,39.4 37.7,28 33,7.6 "/></svg>');
   background-size: cover;
 }
 

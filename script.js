@@ -1,4 +1,6 @@
-var slider = document.getElementById("slider");
+const slider = document.getElementById("slider");
+const scoreSpan = document.getElementById("score");
+let score = 0;
 
 slider.oninput = function () {
   document.documentElement.style.setProperty(
@@ -7,12 +9,11 @@ slider.oninput = function () {
   );
 
   if (slider.value === slider.max) {
-    console.log("100");
+    score++;
     slider.toggleAttribute("disabled");
 
     setTimeout(function () {
-      console.log("1sec");
-      var interval = setInterval(function () {
+      const interval = setInterval(function () {
         document.documentElement.style.setProperty(
           "--rotation-angle",
           slider.value + "deg"
@@ -29,4 +30,6 @@ slider.oninput = function () {
       }, 3);
     }, 800);
   }
+
+  scoreSpan.innerText = "Score: " + score;
 };
