@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../script.js" defer></script>
+    <script defer>
+      //translated message array
+      const messages = [
+        "SHOP",
+        "Keep Going!",
+        "You can do it!",
+        "Just one more roll!",
+        "Hey, is that a REWARD SHOP up there?!",
+      ];
+    </script>
+
+    <title>Gamifying Sisyphus</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <p>Gamifying Sisyphus</p>
+        <span>|</span>
+        <a id="shoplink" href="#">????</a>
+        <span>|</span>
+        <a id="creditslink" href="#">CREDITS</a>
+        <span></span>
+      </div>
+    </header>
+    <div id="container">
+      <div id="info">
+        <h1 id="message">Roll up that rock!</h1>
+        <h2 id="score">Score: 0</h2>
+      </div>
+      <input
+        type="range"
+        id="slider"
+        name="slider"
+        min="0"
+        max="400"
+        step="1"
+        value="0"
+        class="slider"
+      />
+    </div>
+    <div id="shop">
+      <a class="close" href="#">X</a>
+      <h1>Super Rewarding Reward Shop!</h1>
+    </div>
+    <div id="credits"><a class="close" href="#">X</a></div>
+    <footer></footer>
+  </body>
+</html>

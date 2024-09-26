@@ -9,6 +9,7 @@
 
 :root {
   --rotation-angle: 0deg;
+  --margin-offset: 0px;
 }
 
 * {
@@ -18,6 +19,7 @@
 body {
   background-color: #e8d3b7;
   color: #2e3546;
+  font-family: "Diogenes";
 }
 
 body::before {
@@ -41,13 +43,19 @@ footer {
   height: 7vh;
   background-image: url("svg/bluegreekkeywithlines.svg");
   background-repeat: repeat-x;
+  width: 100%;
+  position: fixed;
+  background-color: #dcbb90;
+  box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  bottom: 0;
 }
 
 header {
-  font-family: "Diogenes";
   font-size: 3vh;
   align-content: center;
-  padding: 0 15px;
 }
 
 header div {
@@ -56,6 +64,29 @@ header div {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 50%;
+  background-color: #dcbb90;
+  border: solid 4px #76582d;
+  height: calc(100% - 8px);
+  align-content: center;
+}
+
+header a {
+  font-size: 2vh;
+  align-content: center;
+}
+a {
+  color: #3d507e;
+}
+a:visited {
+  color: #3d507e;
+}
+a:hover {
+  color: #68779a;
+}
+
+header a img {
+  height: 3.5vh;
+  margin: 3px;
 }
 
 #container {
@@ -64,6 +95,8 @@ header div {
   justify-content: center;
   align-items: center;
   height: 86vh;
+  aspect-ratio: 1;
+  margin: auto;
 }
 
 #info {
@@ -116,6 +149,7 @@ input[type="range"]:focus {
   transform: rotate(var(--rotation-angle));
   background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><polygon style="fill:rgb(112,53,41);" points="12.7,2 2,9.6 0,34.7 20,39.4 37.7,28 33,7.6 "/></svg>');
   background-size: cover;
+  margin-left: var(--margin-offset);
 }
 
 .slider::-moz-range-thumb {
@@ -126,7 +160,6 @@ input[type="range"]:focus {
   background-color: transparent;
   width: 20vh;
   height: 20vh;
-  margin-left: -5px;
   cursor: pointer;
   background-color: transparent;
   transform-origin: 50% 50%;
@@ -135,4 +168,65 @@ input[type="range"]:focus {
   transform: rotate(var(--rotation-angle));
   background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><polygon points="12.7,2 2,9.6 0,34.7 20,39.4 37.7,28 33,7.6 "/></svg>');
   background-size: cover;
+}
+
+#shop,
+#credits {
+  display: none;
+  position: absolute;
+  top: 0;
+  margin: 10vh 10vw;
+  height: 80vh;
+  width: 80vw;
+  background-color: #dcbb90dd;
+  z-index: 1000;
+  border: 19px double #76582d;
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#shop {
+  display: flex !important;
+}
+
+#shop h1 {
+  margin: auto;
+  position: fixed;
+  margin: 1em;
+  animation-name: shoptitle;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shoptitle {
+  0% {
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    color: red;
+  }
+  20% {
+    transform: matrix(1.4, 0.2, 0, 2, 0, 0);
+    color: magenta;
+  }
+  60% {
+    transform: matrix(1.1, -0.2, 0, 2, 0, 0);
+    color: blue;
+  }
+  80% {
+    transform: matrix(1.8, 0.2, 0, 1, 0, 0);
+    color: green;
+  }
+  100% {
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    color: red;
+  }
+}
+
+a.close {
+  text-decoration: none;
+  font-size: 4vh;
+  margin: 6px 15px;
+  position: fixed;
+  top: 0;
+  right: 0;
 }

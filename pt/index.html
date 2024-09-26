@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../script.js" defer></script>
+    <script defer>
+      //translated message array
+      const messages = [
+        "Loja",
+        "Continue!",
+        "Você consegue!",
+        "Só mais uma vez!",
+        "Hey, não é uma LOJA DE RECOMPENSAS ali em cima?!",
+      ];
+    </script>
+
+    <title>Gamificando Sísifo</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <p>Gamificando Sísifo</p>
+        <span>|</span>
+        <a id="shoplink" href="#">????</a>
+        <span>|</span>
+        <a href="#">Créditos</a>
+        <span></span>
+      </div>
+    </header>
+    <div id="container">
+      <div id="info">
+        <h1 id="message">Empurre essa pedra!</h1>
+        <h2 id="score">Score: 0</h2>
+      </div>
+      <input
+        type="range"
+        id="slider"
+        name="slider"
+        min="0"
+        max="400"
+        step="1"
+        value="0"
+        class="slider"
+      />
+    </div>
+    <footer></footer>
+  </body>
+</html>
