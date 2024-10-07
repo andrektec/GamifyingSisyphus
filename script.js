@@ -7,9 +7,16 @@ const shop = document.getElementById("shop");
 const credits = document.getElementById("credits");
 const closelink = document.getElementsByClassName("close");
 let score = 9;
+let lastValue = 0;
 
-slider.oninput = function () {
-  updateRock();
+slider.oninput = () => {
+  // check if user is trying to click slider and not rock
+  if (Math.abs(lastValue - slider.value) > 70) {
+    slider.value = lastValue;
+    return;
+  }
+
+  updateRockAndBG();
 
   if (slider.value === slider.max) {
     score++;
@@ -20,9 +27,14 @@ slider.oninput = function () {
   }
 };
 
+slider.onmouseout = () => {
+  if (slider.value === slider.max) return;
+  setTimeout();
+};
+
 function rockOnTop() {
   const interval = setInterval(function () {
-    updateRock();
+    updateRockAndBG();
 
     if (slider.value > 0) {
       slider.value -= 1;
@@ -35,17 +47,30 @@ function rockOnTop() {
   }, 3);
 }
 
-function updateRock() {
+function updateRockAndBG() {
+  // Set last value variable
+  lastValue = slider.value;
+
   // Set rock rotation with slider value
   document.documentElement.style.setProperty(
     "--rotation-angle",
-    slider.value + "deg"
+    slider.value * 2 + "deg"
   );
 
-  // Set rock margin offset with slider value
+  /* Set rock margin offset with slider value
   document.documentElement.style.setProperty(
     "--margin-offset",
-    Math.round(Number(slider.value) / 16) + "px"
+    Math.round(Number(slider.value) / 16) - 30 + "px"
+  );*/
+
+  // update BG
+  document.documentElement.style.setProperty(
+    "--BG-left",
+    map_left(slider.value) + "px"
+  );
+  document.documentElement.style.setProperty(
+    "--BG-top",
+    map_top(slider.value) + "px"
   );
 }
 
@@ -82,3 +107,20 @@ Array.from(closelink).forEach((el) => {
     shop.style.display = "none";
   });
 });
+
+function map_left(value) {
+  const [sliderLow, sliderHigh, BGLeft_low, BGLeft_high] = [0, 400, 1000, -100];
+  return (
+    BGLeft_low +
+    ((BGLeft_high - BGLeft_low) * (value - sliderLow)) /
+      (sliderHigh - sliderLow)
+  );
+}
+function map_top(value) {
+  const [sliderLow, sliderHigh, BGLeft_low, BGLeft_high] = [0, 400, -500, 700];
+  return (
+    BGLeft_low +
+    ((BGLeft_high - BGLeft_low) * (value - sliderLow)) /
+      (sliderHigh - sliderLow)
+  );
+}

@@ -9,7 +9,9 @@
 
 :root {
   --rotation-angle: 0deg;
-  --margin-offset: 0px;
+  --margin-offset: -30px;
+  --BG-left: 1000px; /*-100*/
+  --BG-top: -500px; /*700*/
 }
 
 * {
@@ -25,17 +27,19 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -10%;
+  left: -10%;
   right: 0;
   z-index: -1;
 
   display: block;
   background-size: cover;
-  width: 100%;
-  height: 100%;
-  background-image: url("svg/GreekKeyPattern5.svg");
-  filter: blur(2px);
+  width: 120%;
+  height: 120%;
+  background-image: url("img/monaback.jpg");
+  filter: blur(3px);
+  margin-top: calc((var(--BG-top)) / 10);
+  margin-left: calc((var(--BG-left)) / 10);
 }
 
 header,
@@ -104,6 +108,7 @@ header a img {
   position: fixed;
   top: 11vh;
   left: 5vw;
+  z-index: 1000;
 }
 
 /* Slider */
@@ -129,7 +134,7 @@ input[type="range"]:focus {
   height: 10vh;
   border: none;
   background: none;
-  border-bottom: 8px solid #2e3546;
+  /*border-bottom: 8px solid #2e3546;*/
   outline: none;
   z-index: 999;
 }
@@ -147,7 +152,7 @@ input[type="range"]:focus {
   transform-origin: 50% 50%;
   filter: blur(0.2px);
   transform: rotate(var(--rotation-angle));
-  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><polygon style="fill:rgb(112,53,41);" points="12.7,2 2,9.6 0,34.7 20,39.4 37.7,28 33,7.6 "/></svg>');
+  background-image: url("svg/rock.svg");
   background-size: cover;
   margin-left: var(--margin-offset);
 }
@@ -225,4 +230,15 @@ a.close {
   position: fixed;
   top: 0;
   right: 0;
+}
+
+div#background {
+  background-image: url(svg/Mountain.svg);
+  width: 1500px;
+  height: 1000px;
+  background-size: cover;
+  position: fixed;
+  margin-left: var(--BG-left); /*-100*/
+  margin-top: var(--BG-top); /*700*/
+  z-index: -1;
 }
