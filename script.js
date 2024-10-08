@@ -6,7 +6,7 @@ const creditsLink = document.getElementById("creditslink");
 const shop = document.getElementById("shop");
 const credits = document.getElementById("credits");
 const closelink = document.getElementsByClassName("close");
-let score = 9;
+let score = 0;
 let lastValue = 0;
 
 slider.oninput = () => {
