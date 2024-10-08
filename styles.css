@@ -99,8 +99,9 @@ header a img {
   justify-content: center;
   align-items: center;
   height: 86vh;
-  aspect-ratio: 1;
   margin: auto;
+  padding-top: 7vh;
+  aspect-ratio: 1.5;
 }
 
 #info {
@@ -130,13 +131,14 @@ input[type="range"]:focus {
   appearance: none;
   box-shadow: none;
   background-color: transparent;
-  width: 90vw;
+  width: 70vw;
   height: 10vh;
   border: none;
   background: none;
   /*border-bottom: 8px solid #2e3546;*/
   outline: none;
   z-index: 999;
+  margin: 10vh;
 }
 
 .slider::-webkit-slider-thumb {
