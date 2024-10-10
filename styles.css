@@ -12,26 +12,34 @@
   --margin-offset: -30px;
   --BG-left: 1000px; /*-100*/
   --BG-top: -500px; /*700*/
+  /*COLORS*/
+  --text-color: #2e3546;
+  --bg-color1: #e8d3b7;
+  --bg-color2: #dcbb90;
+  --border-color: #76582d;
 }
 
 * {
   margin: 0;
 }
 
+#overflow {
+  overflow: hidden;
+}
+
 body {
-  background-color: #e8d3b7;
-  color: #2e3546;
+  background-color: var(--bg-color1);
+  color: var(--text-color);
   font-family: "Diogenes";
 }
 
-body::before {
+/*body::before {
   content: "";
   position: fixed;
   top: -10%;
   left: -10%;
   right: 0;
   z-index: -1;
-
   display: block;
   background-size: cover;
   width: 120%;
@@ -40,7 +48,7 @@ body::before {
   filter: blur(3px);
   margin-top: calc((var(--BG-top)) / 10);
   margin-left: calc((var(--BG-left)) / 10);
-}
+}*/
 
 header,
 footer {
@@ -49,7 +57,7 @@ footer {
   background-repeat: repeat-x;
   width: 100%;
   position: fixed;
-  background-color: #dcbb90;
+  background-color: var(--bg-color2);
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -68,8 +76,8 @@ header div {
   justify-content: space-between;
   flex-wrap: wrap;
   width: 50%;
-  background-color: #dcbb90;
-  border: solid 4px #76582d;
+  background-color: var(--bg-color2);
+  border: solid 4px var(--border-color);
   height: calc(100% - 8px);
   align-content: center;
 }
@@ -94,7 +102,6 @@ header a img {
 }
 
 #container {
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,7 +185,8 @@ input[type="range"]:focus {
 }
 
 #shop,
-#credits {
+#credits,
+#forceLandscape {
   display: none;
   position: absolute;
   top: 0;
@@ -187,10 +195,22 @@ input[type="range"]:focus {
   width: 80vw;
   background-color: #dcbb90dd;
   z-index: 1000;
-  border: 19px double #76582d;
+  border: 19px double var(--border-color);
   backdrop-filter: blur(5px);
-  justify-content: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+#shoplink {
+  background-color: var(--bg-color2);
+  border-radius: 1.5em;
+  padding: 0.5em 2em;
+  text-decoration: none;
+  position: fixed;
+  bottom: 10vh;
+  right: 5vw;
+  color: var(--text-color);
+  box-shadow: 0 0 8px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 #shop h1 {
@@ -243,4 +263,36 @@ div#background {
   margin-left: var(--BG-left); /*-100*/
   margin-top: var(--BG-top); /*700*/
   z-index: -1;
+}
+
+#modalBackdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/*force Landscape*/
+@media all and (orientation: portrait) {
+  #forceLandscape {
+    display: block !important;
+  }
+  #modalBackdrop {
+    display: block;
+  }
+}
+#forceLandscape {
+  margin: 30vh 10vw !important;
+  height: 30vh !important;
+  width: 60vw !important;
+  padding: 1em;
+}
+
+#forceLandscape img {
+  width: 4em;
 }

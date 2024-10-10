@@ -20,51 +20,65 @@
     <title>Gamifying Sisyphus</title>
   </head>
   <body>
-    <header>
-      <div>
-        <p>Gamifying Sisyphus</p>
-        <span>|</span>
-        <a id="shoplink" href="#">????</a>
-        <span>|</span>
-        <a id="creditslink" href="#">CREDITS</a>
-        <span></span>
+    <header></header>
+    <div id="overflow">
+      <div id="container">
+        <div id="info">
+          <h1 id="message">Roll up that rock!</h1>
+          <h2 id="score">Score: 0</h2>
+        </div>
+        <input
+          type="range"
+          id="slider"
+          name="slider"
+          min="0"
+          max="400"
+          step="1"
+          value="0"
+          class="slider"
+        />
+        <div id="background"><div>test</div></div>
+        <a id="shoplink" href="#"><h1>????</h1></a>
       </div>
-    </header>
-    <div id="container">
-      <div id="info">
-        <h1 id="message">Roll up that rock!</h1>
-        <h2 id="score">Score: 0</h2>
+
+      <div id="modalBackdrop"></div>
+
+      <div id="shop">
+        <a class="close" href="#">X</a>
+        <h1>Super Rewarding Reward Shop!</h1>
       </div>
-      <input
-        type="range"
-        id="slider"
-        name="slider"
-        min="0"
-        max="400"
-        step="1"
-        value="0"
-        class="slider"
-      />
-      <div id="background"><div>test</div></div>
-    </div>
-    <div id="shop">
-      <a class="close" href="#">X</a>
-      <h1>Super Rewarding Reward Shop!</h1>
-    </div>
-    <div id="credits">
-      <a class="close" href="#">X</a>
-      <a
-        href="https://www.freepik.com/free-vector/vintage-monochrome-mountains-set_7997411.htm#fromView=search&page=1&position=1&uuid=d7750823-1a0e-4a15-98cc-f3adcfdf111d"
-        >Image by dgim-studio on Freepik</a
-      >
-      stone by Nico Bökenkröger from
-      <a
-        href="https://thenounproject.com/browse/icons/term/stone/"
-        target="_blank"
-        title="stone Icons"
-        >Noun Project</a
-      >
-      (CC BY 3.0)
+
+      <div id="credits">
+        <a class="close" href="#">X</a>
+        <a
+          href="https://www.freepik.com/free-vector/vintage-monochrome-mountains-set_7997411.htm#fromView=search&page=1&position=1&uuid=d7750823-1a0e-4a15-98cc-f3adcfdf111d"
+          >Image by dgim-studio on Freepik</a
+        >
+        stone by Nico Bökenkröger from
+        <a
+          href="https://thenounproject.com/browse/icons/term/stone/"
+          target="_blank"
+          title="stone Icons"
+          >Noun Project</a
+        >
+        (CC BY 3.0) Rotate Phone by maria icon from
+        <a
+          href="https://thenounproject.com/browse/icons/term/rotate-phone/"
+          target="_blank"
+          title="Rotate Phone Icons"
+          >Noun Project</a
+        >
+        (CC BY 3.0)
+      </div>
+
+      <div id="forceLandscape">
+        <img src="/svg/rotatephone.svg" alt="Description of image" />
+        <h1>Flip your Phone!</h1>
+        <p>
+          This experience is better in Landscape Mode. Flip your phone or ajust
+          your viewport.
+        </p>
+      </div>
     </div>
     <footer></footer>
   </body>

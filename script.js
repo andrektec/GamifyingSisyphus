@@ -27,11 +27,6 @@ slider.oninput = () => {
   }
 };
 
-slider.onmouseout = () => {
-  if (slider.value === slider.max) return;
-  setTimeout();
-};
-
 function rockOnTop() {
   const interval = setInterval(function () {
     updateRockAndBG();
@@ -89,20 +84,22 @@ function updateUI() {
       break;
     case 10:
       messageEl.innerText = messages[4];
-      shopLink.innerText = messages[0];
+      shopLink.innerHTML = `<h1>${messages[0]}</h1>`;
       break;
   }
 }
 
-creditsLink.addEventListener("click", () => {
-  credits.style.display = "flex";
-});
+/*creditsLink.addEventListener("click", () => {
+  credits.style.display = "block";
+});*/
 shopLink.addEventListener("click", () => {
-  if (score >= 10) shop.style.display = "flex";
+  console.log("click");
+  if (score >= 10) shop.style.display = "block";
 });
 
 Array.from(closelink).forEach((el) => {
-  el.addEventListener("click", function () {
+  el.addEventListener("click", function (event) {
+    event.preventDefault();
     credits.style.display = "none";
     shop.style.display = "none";
   });
