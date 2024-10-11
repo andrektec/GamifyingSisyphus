@@ -52,7 +52,7 @@ function updateRockAndBG() {
     slider.value * 2 + "deg"
   );
 
-  /* Set rock margin offset with slider value
+  /* Set rock margin offset with slider value 
   document.documentElement.style.setProperty(
     "--margin-offset",
     Math.round(Number(slider.value) / 16) - 30 + "px"
@@ -64,8 +64,8 @@ function updateRockAndBG() {
     map_left(slider.value) + "px"
   );
   document.documentElement.style.setProperty(
-    "--BG-top",
-    map_top(slider.value) + "px"
+    "--BG-bottom",
+    map_bottom(slider.value) + "px"
   );
 }
 
@@ -93,7 +93,6 @@ function updateUI() {
   credits.style.display = "block";
 });*/
 shopLink.addEventListener("click", () => {
-  console.log("click");
   if (score >= 10) shop.style.display = "block";
 });
 
@@ -106,18 +105,47 @@ Array.from(closelink).forEach((el) => {
 });
 
 function map_left(value) {
-  const [sliderLow, sliderHigh, BGLeft_low, BGLeft_high] = [0, 400, 1000, -100];
+  const [sliderLow, sliderHigh, BGLeft_low, BGLeft_high] = [0, 400, -500, -800];
   return (
     BGLeft_low +
     ((BGLeft_high - BGLeft_low) * (value - sliderLow)) /
       (sliderHigh - sliderLow)
   );
 }
-function map_top(value) {
-  const [sliderLow, sliderHigh, BGLeft_low, BGLeft_high] = [0, 400, -500, 700];
+function map_bottom(value) {
+  const [sliderLow, sliderHigh, BGBottom_low, BGBottom_high] = [
+    0, 400, 0, -600,
+  ];
   return (
-    BGLeft_low +
-    ((BGLeft_high - BGLeft_low) * (value - sliderLow)) /
+    BGBottom_low +
+    ((BGBottom_high - BGBottom_low) * (value - sliderLow)) /
       (sliderHigh - sliderLow)
   );
+}
+
+var elem = document.documentElement;
+
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+/* Close fullscreen */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    /* IE11 */
+    document.msExitFullscreen();
+  }
 }

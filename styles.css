@@ -10,8 +10,8 @@
 :root {
   --rotation-angle: 0deg;
   --margin-offset: -30px;
-  --BG-left: 1000px; /*-100*/
-  --BG-top: -500px; /*700*/
+  --BG-left: -500px; /*-500 - -800*/
+  --BG-bottom: 0px; /*0 - -300*/
   /*COLORS*/
   --text-color: #2e3546;
   --bg-color1: #e8d3b7;
@@ -132,14 +132,14 @@ input[type="range"]:focus {
 }
 
 .slider {
-  transform: rotate(-35deg);
+  transform: rotate(-38deg);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   box-shadow: none;
   background-color: transparent;
-  width: 70vw;
-  height: 10vh;
+  width: 100vh;
+  height: 0;
   border: none;
   background: none;
   /*border-bottom: 8px solid #2e3546;*/
@@ -167,21 +167,6 @@ input[type="range"]:focus {
 }
 
 .slider::-moz-range-thumb {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  box-shadow: none;
-  background-color: transparent;
-  width: 20vh;
-  height: 20vh;
-  cursor: pointer;
-  background-color: transparent;
-  transform-origin: 50% 50%;
-  filter: invert(15%) sepia(12%) saturate(3764%) hue-rotate(328deg)
-    brightness(92%) contrast(89%);
-  transform: rotate(var(--rotation-angle));
-  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><polygon points="12.7,2 2,9.6 0,34.7 20,39.4 37.7,28 33,7.6 "/></svg>');
-  background-size: cover;
 }
 
 #shop,
@@ -256,13 +241,30 @@ a.close {
 
 div#background {
   background-image: url(svg/Mountain.svg);
-  width: 1500px;
-  height: 1000px;
+  height: 950px;
   background-size: cover;
-  position: fixed;
-  margin-left: var(--BG-left); /*-100*/
-  margin-top: var(--BG-top); /*700*/
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--BG-bottom);
   z-index: -1;
+  bottom: 0;
+  left: var(--BG-left);
+  aspect-ratio: 1.5;
+}
+
+#inputcontainer,
+#bgcontainer {
+  width: 100vw;
+  text-align: center;
+}
+
+#bgcontainer {
+  margin-left: 50vw;
+  margin-right: 50vw;
+  width: 0;
+  position: relative;
+  left: -100vw;
 }
 
 #modalBackdrop {
