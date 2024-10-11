@@ -6,8 +6,20 @@ const creditsLink = document.getElementById("creditslink");
 const shop = document.getElementById("shop");
 const credits = document.getElementById("credits");
 const closelink = document.getElementsByClassName("close");
+const fslink = document.getElementById("fslink");
+
+const SItemImg = document.querySelector("#shopitem img");
+const SItemP = document.querySelector("#shopitem p");
+const SItemA = document.querySelector("#shopitem a");
+const prevLink = document.getElementById("prev");
+const nextLink = document.getElementById("next");
+const buyLink = document.getElementById("buy");
+
 let score = 0;
 let lastValue = 0;
+let fullscreen = false;
+let selShopItem = 0;
+let purchasedstickers = [];
 
 slider.oninput = () => {
   // check if user is trying to click slider and not rock
@@ -89,11 +101,59 @@ function updateUI() {
   }
 }
 
+function navigateShop(direction = 1) {
+  if (direction === 0 && selShopItem != 0) selShopItem--;
+  if (direction === 1 && selShopItem != shopitems.length - 1) selShopItem++;
+
+  SItemImg.src = shopitems[selShopItem].src;
+  SItemP.innerText = shopitems[selShopItem].desc;
+  SItemA.innerText = `Buy - ${shopitems[selShopItem].price} points`;
+}
+
+function buySticker() {
+  if (purchasedstickers.includes(selShopItem)) return;
+  purchasedstickers.push(selShopItem);
+
+  let docEl = getComputedStyle(document.body);
+
+  let lastrockBG = docEl.getPropertyValue("--rockBG");
+  console.log(lastrockBG);
+  document.documentElement.style.setProperty(
+    "--rockBG",
+    `url("${shopitems[selShopItem].src}") 20px 20px, ${lastrockBG}`
+  );
+  let lastrockBGsize = docEl.getPropertyValue("--rockBG-size");
+  console.log(lastrockBGsize);
+  document.documentElement.style.setProperty(
+    "--rockBG-size",
+    `20%, ${lastrockBGsize}`
+  );
+}
+
 /*creditsLink.addEventListener("click", () => {
   credits.style.display = "block";
 });*/
 shopLink.addEventListener("click", () => {
   if (score >= 10) shop.style.display = "block";
+});
+fslink.addEventListener("click", () => {
+  if (fullscreen) {
+    closeFullscreen();
+  } else {
+    openFullscreen();
+  }
+  fullscreen = !fullscreen;
+});
+
+prevLink.addEventListener("click", () => {
+  navigateShop(0);
+});
+nextLink.addEventListener("click", () => {
+  navigateShop(1);
+});
+
+buyLink.addEventListener("click", () => {
+  buySticker();
 });
 
 Array.from(closelink).forEach((el) => {

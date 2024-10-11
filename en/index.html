@@ -15,6 +15,13 @@
         "Just one more roll!",
         "Hey, is that a REWARD SHOP up there?!",
       ];
+      const shopitems = [
+        { src: "../svg/iloverocks.svg", desc: "Description1", price: 10 },
+        { src: "../svg/rock.svg", desc: "Description2", price: 15 },
+        { src: "../svg/rock.svg", desc: "Description3", price: 20 },
+        { src: "../svg/rock.svg", desc: "Description4", price: 25 },
+        { src: "../svg/rock.svg", desc: "Description5", price: 30 },
+      ];
     </script>
 
     <title>Gamifying Sisyphus</title>
@@ -44,18 +51,31 @@
             <div>test</div>
           </div>
         </div>
-        <a id="shoplink" href="#"><h1>????</h1></a>
+        <a id="shoplink" href="#"><h2>????</h2></a>
+        <a id="fslink" href="#"
+          ><img src="/svg/fullscreen.svg" alt="Toggle Fullscreen"
+        /></a>
       </div>
 
       <div id="modalBackdrop"></div>
 
       <div id="shop">
-        <a class="close" href="#">X</a>
+        <a class="close" href="#">&#10006;</a>
         <h1>Super Rewarding Reward Shop!</h1>
+        <div id="storebody">
+          <a href="#" id="prev" style="transform: scale(-1, 1)">➜</a>
+          <div id="shopitem">
+            <img src="../svg/iloverocks.svg" /><br />
+            <p>Description</p>
+            <br />
+            <a id="buy" href="#">Buy - 10 points</a>
+          </div>
+          <a href="#" id="next">➜</a>
+        </div>
       </div>
 
       <div id="credits">
-        <a class="close" href="#">X</a>
+        <a class="close" href="#">&#10006;</a>
         <a
           href="https://www.freepik.com/free-vector/vintage-monochrome-mountains-set_7997411.htm#fromView=search&page=1&position=1&uuid=d7750823-1a0e-4a15-98cc-f3adcfdf111d"
           >Image by dgim-studio on Freepik</a
@@ -76,9 +96,17 @@
         >
         (CC BY 3.0)
       </div>
+      Fullscreen by Andi wiyanto from
+      <a
+        href="https://thenounproject.com/browse/icons/term/fullscreen/"
+        target="_blank"
+        title="Fullscreen Icons"
+        >Noun Project</a
+      >
+      (CC BY 3.0)
 
       <div id="forceLandscape">
-        <img src="/svg/rotatephone.svg" alt="Description of image" />
+        <img src="../svg/rotatephone.svg" alt="Rotate your device" />
         <h1>Flip your Phone!</h1>
         <p>
           This experience is better in Landscape Mode. Flip your phone or ajust

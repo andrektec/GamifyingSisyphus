@@ -17,7 +17,19 @@
   --bg-color1: #e8d3b7;
   --bg-color2: #dcbb90;
   --border-color: #76582d;
+  /*Stickers
+  --rockBG: url("svg/iloverocks.svg") 20px 20px, url("svg/rock.svg") 0 0;
+  --rockBG-size: 20%, 100%;*/
+  --rockBG: url("svg/rock.svg") 0 0;
+  --rockBG-size: 100%;
 }
+
+/*@media only screen and (max-width: 900px) {
+  /* For mobile phones:
+  * {
+    font-size: 16px;
+  }
+}*/
 
 * {
   margin: 0;
@@ -161,13 +173,18 @@ input[type="range"]:focus {
   transform-origin: 50% 50%;
   filter: blur(0.2px);
   transform: rotate(var(--rotation-angle));
-  background-image: url("svg/rock.svg");
-  background-size: cover;
+  background: var(--rockBG);
+  background-repeat: no-repeat;
+  background-size: var(--rockBG-size);
   margin-left: var(--margin-offset);
 }
 
-.slider::-moz-range-thumb {
+.slider::-webkit-slider-thumb {
+  content: "test";
 }
+
+/*.slider::-moz-range-thumb {
+}*/
 
 #shop,
 #credits,
@@ -176,8 +193,8 @@ input[type="range"]:focus {
   position: absolute;
   top: 0;
   margin: 10vh 10vw;
-  height: 80vh;
-  width: 80vw;
+  height: calc(80vh - 38px);
+  width: calc(80vw - 38px);
   background-color: #dcbb90dd;
   z-index: 1000;
   border: 19px double var(--border-color);
@@ -192,19 +209,45 @@ input[type="range"]:focus {
   padding: 0.5em 2em;
   text-decoration: none;
   position: fixed;
-  bottom: 10vh;
+  bottom: 12vh;
   right: 5vw;
   color: var(--text-color);
   box-shadow: 0 0 8px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 #shop h1 {
-  margin: auto;
-  position: fixed;
-  margin: 1em;
+  margin: 1em 0;
   animation-name: shoptitle;
   animation-duration: 4s;
   animation-iteration-count: infinite;
+  overflow: hidden;
+}
+
+div#storebody {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+div#storebody > a {
+  font-size: 4em;
+  text-decoration: none;
+}
+
+#shopitem img {
+  height: 100%;
+  margin-bottom: 16px;
+}
+
+#shopitem {
+  height: 40vh;
+}
+
+#shopitem a {
+  background: #ea972c;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 1em;
 }
 
 @keyframes shoptitle {
@@ -237,6 +280,7 @@ a.close {
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 1000;
 }
 
 div#background {
@@ -275,7 +319,7 @@ div#background {
   width: 100vw;
   height: 100vh;
   backdrop-filter: blur(5px);
-  z-index: 1000;
+  z-index: 1001;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -293,8 +337,38 @@ div#background {
   height: 30vh !important;
   width: 60vw !important;
   padding: 1em;
+  z-index: 1002 !important;
 }
 
 #forceLandscape img {
   width: 4em;
+}
+
+#langlink {
+  background-color: var(--bg-color2);
+  border-radius: 1.5em;
+  padding: 0.5em 2em;
+  text-decoration: none;
+  color: var(--text-color);
+  box-shadow: 0 0 8px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  max-width: 5em;
+}
+
+#langdiv {
+  text-align: center;
+}
+
+#langdiv * {
+  margin: 1em auto;
+  display: block;
+}
+
+#fslink {
+  position: fixed;
+  top: 12vh;
+  right: 5vw;
+}
+
+#fslink img {
+  width: 3em;
 }
