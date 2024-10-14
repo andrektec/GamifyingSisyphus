@@ -17,6 +17,10 @@
   --bg-color1: #e8d3b7;
   --bg-color2: #dcbb90;
   --border-color: #76582d;
+
+  --hardbrown: #422905;
+  --default-button: #dcbb90;
+  --pressedhover-button: #c2a57f;
   /*Stickers
   --rockBG: url("svg/iloverocks.svg") 20px 20px, url("svg/rock.svg") 0 0;
   --rockBG-size: 20%, 100%;*/
@@ -24,8 +28,8 @@
   --rockBG-size: 100%;
 }
 
-/*@media only screen and (max-width: 900px) {
-  /* For mobile phones:
+/*
+@media only screen and (max-width: 900px) {
   * {
     font-size: 16px;
   }
@@ -41,8 +45,8 @@
 
 body {
   background-color: var(--bg-color1);
-  color: var(--text-color);
-  font-family: "Diogenes";
+  color: var(--hardbrown);
+  font-family: "Federo", sans-serif;
 }
 
 /*body::before {
@@ -129,6 +133,7 @@ header a img {
   top: 11vh;
   left: 5vw;
   z-index: 1000;
+  width: 50%;
 }
 
 /* Slider */
@@ -204,15 +209,19 @@ input[type="range"]:focus {
 }
 
 #shoplink {
-  background-color: var(--bg-color2);
-  border-radius: 1.5em;
-  padding: 0.5em 2em;
+  background-color: var(--default-button);
+  color: var(--hardbrown);
+  border-radius: 2em;
+  padding: 1em 2em;
   text-decoration: none;
   position: fixed;
   bottom: 12vh;
   right: 5vw;
-  color: var(--text-color);
   box-shadow: 0 0 8px 0 rgb(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+#shoplink:hover,
+#shoplink:active {
+  background-color: var(--pressedhover-button);
 }
 
 #shop h1 {
@@ -221,6 +230,8 @@ input[type="range"]:focus {
   animation-duration: 4s;
   animation-iteration-count: infinite;
   overflow: hidden;
+  position: static;
+  font-family: "Diogenes";
 }
 
 div#storebody {
@@ -230,13 +241,20 @@ div#storebody {
 }
 
 div#storebody > a {
-  font-size: 4em;
-  text-decoration: none;
+  background-color: var(--default-button);
+  width: 3em;
+  height: 3em;
+  border-radius: 2em;
+  align-content: center;
+  padding: 2px 0 0 2px;
+}
+div#storebody > a:hover,
+div#storebody > a:active {
+  background-color: var(--pressedhover-button);
 }
 
 #shopitem img {
-  height: 100%;
-  margin-bottom: 16px;
+  height: 80%;
 }
 
 #shopitem {
@@ -248,6 +266,10 @@ div#storebody > a {
   padding: 0.5em 1em;
   text-decoration: none;
   border-radius: 1em;
+}
+
+.disabled {
+  filter: grayscale();
 }
 
 @keyframes shoptitle {
@@ -274,13 +296,16 @@ div#storebody > a {
 }
 
 a.close {
-  text-decoration: none;
-  font-size: 4vh;
   margin: 6px 15px;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 1000;
+  background-color: var(--default-button);
+  width: 3em;
+  height: 3em;
+  border-radius: 2em;
+  align-content: center;
 }
 
 div#background {

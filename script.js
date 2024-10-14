@@ -15,7 +15,8 @@ const prevLink = document.getElementById("prev");
 const nextLink = document.getElementById("next");
 const buyLink = document.getElementById("buy");
 
-let score = 0;
+let rolls = 10;
+let score = 10;
 let lastValue = 0;
 let fullscreen = false;
 let selShopItem = 0;
@@ -32,6 +33,7 @@ slider.oninput = () => {
 
   if (slider.value === slider.max) {
     score++;
+    rolls++;
     slider.toggleAttribute("disabled");
 
     setTimeout(rockOnTop, 800);
@@ -84,7 +86,7 @@ function updateRockAndBG() {
 function updateUI() {
   scoreEl.innerText = "Score: " + score;
 
-  switch (score) {
+  switch (rolls) {
     case 2:
       messageEl.innerText = messages[1];
       break;
@@ -96,7 +98,7 @@ function updateUI() {
       break;
     case 10:
       messageEl.innerText = messages[4];
-      shopLink.innerHTML = `<h1>${messages[0]}</h1>`;
+      shopLink.innerHTML = `${messages[0]}`;
       break;
   }
 }
@@ -105,36 +107,59 @@ function navigateShop(direction = 1) {
   if (direction === 0 && selShopItem != 0) selShopItem--;
   if (direction === 1 && selShopItem != shopitems.length - 1) selShopItem++;
 
-  SItemImg.src = shopitems[selShopItem].src;
-  SItemP.innerText = shopitems[selShopItem].desc;
-  SItemA.innerText = `Buy - ${shopitems[selShopItem].price} points`;
+  updateItemUI();
 }
 
 function buySticker() {
   if (purchasedstickers.includes(selShopItem)) return;
+  if (score < shopitems[selShopItem].price) return;
+
+  score -= shopitems[selShopItem].price;
   purchasedstickers.push(selShopItem);
 
-  let docEl = getComputedStyle(document.body);
+  let bodyStyle = getComputedStyle(document.body);
 
-  let lastrockBG = docEl.getPropertyValue("--rockBG");
+  let lastrockBG = bodyStyle.getPropertyValue("--rockBG");
   console.log(lastrockBG);
   document.documentElement.style.setProperty(
     "--rockBG",
-    `url("${shopitems[selShopItem].src}") 20px 20px, ${lastrockBG}`
+    `url("${shopitems[selShopItem].src}") ${shopitems[selShopItem].pos}, ${lastrockBG}`
   );
-  let lastrockBGsize = docEl.getPropertyValue("--rockBG-size");
+  let lastrockBGsize = bodyStyle.getPropertyValue("--rockBG-size");
   console.log(lastrockBGsize);
   document.documentElement.style.setProperty(
     "--rockBG-size",
-    `20%, ${lastrockBGsize}`
+    `25%, ${lastrockBGsize}`
   );
+
+  updateItemUI();
+  updateUI();
+}
+
+function updateItemUI() {
+  const isPurchased = purchasedstickers.includes(selShopItem);
+
+  SItemImg.src = shopitems[selShopItem].src;
+  SItemP.innerText = shopitems[selShopItem].desc;
+  SItemA.innerText = isPurchased
+    ? "Sold out"
+    : `Buy - ${shopitems[selShopItem].price} points`;
+  if (isPurchased) {
+    SItemImg.classList.add("disabled");
+    SItemA.classList.add("disabled");
+  } else {
+    SItemImg.classList.remove("disabled");
+    if (score < shopitems[selShopItem].price) SItemA.classList.add("disabled");
+    else SItemA.classList.remove("disabled");
+  }
 }
 
 /*creditsLink.addEventListener("click", () => {
   credits.style.display = "block";
 });*/
 shopLink.addEventListener("click", () => {
-  if (score >= 10) shop.style.display = "block";
+  if (rolls >= 10) shop.style.display = "block";
+  updateItemUI();
 });
 fslink.addEventListener("click", () => {
   if (fullscreen) {

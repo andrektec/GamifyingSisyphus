@@ -3,6 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="../svg/favicon.svg"
+      sizes="any"
+      type="image/svg+xml"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Federo&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="../styles.css" />
     <script src="../script.js" defer></script>
@@ -13,14 +26,33 @@
         "Keep Going!",
         "You can do it!",
         "Just one more roll!",
-        "Hey, is that a REWARD SHOP up there?!",
+        "Hey, is that a REWARD SHOP in the corner?!",
       ];
       const shopitems = [
-        { src: "../svg/iloverocks.svg", desc: "Description1", price: 10 },
-        { src: "../svg/rock.svg", desc: "Description2", price: 15 },
-        { src: "../svg/rock.svg", desc: "Description3", price: 20 },
-        { src: "../svg/rock.svg", desc: "Description4", price: 25 },
-        { src: "../svg/rock.svg", desc: "Description5", price: 30 },
+        {
+          src: "../svg/iloverocks.svg",
+          pos: "30px 20px",
+          desc: "Show your love for your job!",
+          price: 10,
+        },
+        {
+          src: "../svg/zeus.svg",
+          pos: "60px 30px",
+          desc: "Aim to the highest grounds!",
+          price: 15,
+        },
+        {
+          src: "../svg/atlas.svg",
+          pos: "90px 50px",
+          desc: "Let Atlas muscles inspire you.",
+          price: 20,
+        },
+        {
+          src: "../svg/discorock.svg",
+          pos: "40px 80px",
+          desc: "DISCO BABY!",
+          price: 25,
+        },
       ];
     </script>
 
@@ -51,7 +83,7 @@
             <div>test</div>
           </div>
         </div>
-        <a id="shoplink" href="#"><h2>????</h2></a>
+        <a id="shoplink" href="#">????</a>
         <a id="fslink" href="#"
           ><img src="/svg/fullscreen.svg" alt="Toggle Fullscreen"
         /></a>
@@ -60,17 +92,19 @@
       <div id="modalBackdrop"></div>
 
       <div id="shop">
-        <a class="close" href="#">&#10006;</a>
+        <a class="close" href="#"><img src="../svg/x.svg" /></a>
         <h1>Super Rewarding Reward Shop!</h1>
         <div id="storebody">
-          <a href="#" id="prev" style="transform: scale(-1, 1)">➜</a>
+          <a href="#" id="prev" style="transform: scale(-1, 1)"
+            ><img src="../svg/arrowr.svg"
+          /></a>
           <div id="shopitem">
             <img src="../svg/iloverocks.svg" /><br />
             <p>Description</p>
             <br />
             <a id="buy" href="#">Buy - 10 points</a>
           </div>
-          <a href="#" id="next">➜</a>
+          <a href="#" id="next"><img src="../svg/arrowr.svg" /></a>
         </div>
       </div>
 
@@ -94,16 +128,15 @@
           title="Rotate Phone Icons"
           >Noun Project</a
         >
+        (CC BY 3.0) Fullscreen by Andi wiyanto from
+        <a
+          href="https://thenounproject.com/browse/icons/term/fullscreen/"
+          target="_blank"
+          title="Fullscreen Icons"
+          >Noun Project</a
+        >
         (CC BY 3.0)
       </div>
-      Fullscreen by Andi wiyanto from
-      <a
-        href="https://thenounproject.com/browse/icons/term/fullscreen/"
-        target="_blank"
-        title="Fullscreen Icons"
-        >Noun Project</a
-      >
-      (CC BY 3.0)
 
       <div id="forceLandscape">
         <img src="../svg/rotatephone.svg" alt="Rotate your device" />
