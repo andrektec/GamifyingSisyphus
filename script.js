@@ -154,9 +154,9 @@ function updateItemUI() {
   }
 }
 
-/*creditsLink.addEventListener("click", () => {
+creditsLink.addEventListener("click", () => {
   credits.style.display = "block";
-});*/
+});
 shopLink.addEventListener("click", () => {
   if (rolls >= 10) shop.style.display = "block";
   updateItemUI();
@@ -164,8 +164,10 @@ shopLink.addEventListener("click", () => {
 fslink.addEventListener("click", () => {
   if (fullscreen) {
     closeFullscreen();
+    fslink.firstChild.src = "/svg/enterfs.svg";
   } else {
     openFullscreen();
+    fslink.firstChild.src = "/svg/exitfs.svg";
   }
   fullscreen = !fullscreen;
 });

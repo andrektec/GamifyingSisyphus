@@ -19,8 +19,8 @@
   --border-color: #76582d;
 
   --hardbrown: #422905;
-  --default-button: #dcbb90;
-  --pressedhover-button: #c2a57f;
+  --default-button: #f29d49;
+  --pressedhover-button: #d9822b;
   /*Stickers
   --rockBG: url("svg/iloverocks.svg") 20px 20px, url("svg/rock.svg") 0 0;
   --rockBG-size: 20%, 100%;*/
@@ -101,15 +101,6 @@ header div {
 header a {
   font-size: 2vh;
   align-content: center;
-}
-a {
-  color: #3d507e;
-}
-a:visited {
-  color: #3d507e;
-}
-a:hover {
-  color: #68779a;
 }
 
 header a img {
@@ -224,7 +215,7 @@ input[type="range"]:focus {
   background-color: var(--pressedhover-button);
 }
 
-#shop h1 {
+#shop h2 {
   margin: 1em 0;
   animation-name: shoptitle;
   animation-duration: 4s;
@@ -262,10 +253,16 @@ div#storebody > a:active {
 }
 
 #shopitem a {
-  background: #ea972c;
+  background: var(--default-button);
+  color: var(--hardbrown);
   padding: 0.5em 1em;
   text-decoration: none;
   border-radius: 1em;
+}
+
+#shopitem a:hover,
+#shopitem a:active {
+  background: var(--pressedhover-button);
 }
 
 .disabled {
@@ -296,7 +293,7 @@ div#storebody > a:active {
 }
 
 a.close {
-  margin: 6px 15px;
+  margin: 6px;
   position: fixed;
   top: 0;
   right: 0;
@@ -392,8 +389,20 @@ div#background {
   position: fixed;
   top: 12vh;
   right: 5vw;
+  background-color: var(--default-button);
+  width: 3em;
+  height: 3em;
+  border-radius: 2em;
+  align-content: center;
+  padding: 3px 1px 0 0;
+  text-align: center;
+}
+
+#fslink:hover,
+#fslink:active {
+  background-color: var(--pressedhover-button);
 }
 
 #fslink img {
-  width: 3em;
+  width: 1.8em;
 }
